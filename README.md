@@ -58,7 +58,7 @@ ESP8266虽然可以通过串口调试，但不能通过类似U盘的形式将脚
 ![WebRepl](./imgs/img_webrepl.jpg)
 
 > **设置WiFi的方法**  
-> <pre><code>
+<pre><code>
 >>> help()
 Welcome to MicroPython!
 
