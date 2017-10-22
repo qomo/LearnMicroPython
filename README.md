@@ -51,9 +51,13 @@ $ sudo picocom -b 115200 /dev/ttyUSB0
 
 ESP8266虽然可以通过串口调试，但不能通过类似U盘的形式将脚本拷贝到芯片里。  
 不过可以通过webrepl传输，具体方法如下：  
-1. 通过串口设置连接到与PC相同网段的wifi。（或设置AP模式，而PC连接到ESP8266）  
-2. 打开'http://micropython.org/webrepl/'  
-3. 设置IP地址为ESP8266的IP  
+1. 通过串口设置webrepl
+<pre><code>
+import webrepl_setup
+</code></pre>
+2. 通过串口设置连接到与PC相同网段的wifi。（或设置AP模式，而PC连接到ESP8266）  
+3. 打开'http://micropython.org/webrepl/'  
+4. 设置IP地址为ESP8266的IP  
 之后就能改在浏览器中与ESP8266交互，和上传下载文件了。  
 ![WebRepl](./imgs/img_webrepl.jpg)
 
@@ -86,3 +90,4 @@ Control commands:
 For further help on a specific object, type help(obj)
 >>> 
 </code></pre>
+> [1] [关于REPL的官方文档](http://docs.micropython.org/en/latest/esp8266/esp8266/tutorial/repl.html)
