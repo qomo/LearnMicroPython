@@ -1,7 +1,7 @@
 # MicroPython On ESP8266  
 
 硬件采用一块ESP8266的nodemcu模组  
-![nodemcu模组](./imgs/img_nodemcu.jpg)
+![nodemcu模组](./imgs/img_nodemcu_compress.jpg)
 
 ## 烧录镜像  
 
