@@ -10,5 +10,11 @@
 - 工具安装：'''pip install esptool'''  
 > 这是用来flash firmware到esp8266的工具  
 
-- 刷镜像:  
-
+### 刷镜像  
+1. 将nodemcu的节点权限设为777  
+<pre><code>
+LearnMicroPython$ ls -l /dev/ttyUSB0  
+crw-rw---- 1 root dialout 188, 0 10月 22 11:54 /dev/ttyUSB0
+LearnMicroPython$ sudo chmod 777 /dev/ttyUSB0 
+LearnMicroPython$ ls -l /dev/ttyUSB0 crwxrwxrwx 1 root dialout 188, 0 10月 22 11:54 /dev/ttyUSB0
+</code></pre>
