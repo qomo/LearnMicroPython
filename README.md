@@ -55,3 +55,4 @@ ESP8266虽然可以通过串口调试，但不能通过类似U盘的形式将脚
 2. 打开'http://micropython.org/webrepl/'  
 3. 设置IP地址为ESP8266的IP  
 之后就能改在浏览器中与ESP8266交互，和上传下载文件了。  
+![WebRepl](./imgs/img_webrepl.jpg)
