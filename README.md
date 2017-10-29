@@ -89,5 +89,7 @@ Control commands:
 
 For further help on a specific object, type help(obj)
 >>> 
-</code></pre>
-> [1] [关于REPL的官方文档](http://docs.micropython.org/en/latest/esp8266/esp8266/tutorial/repl.html)
+</code></pre>  
+
+
+1. [Micropython on ESP8266官方文档](http://docs.micropython.org/en/latest/esp8266/esp8266/tutorial/index.html)
