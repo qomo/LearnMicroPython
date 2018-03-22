@@ -96,6 +96,10 @@ For further help on a specific object, type help(obj)
 1. [安装esp-open-sdk](https://github.com/pfalcon/esp-open-sdk)
 2. [参考micropython/ports/esp8266的指导下载编译源码](https://github.com/micropython/micropython/tree/master/ports/esp8266)
 
+## 自动化测试  
+### 测试的执行方法  
+### 测试的原理
+
 ## 源码详解  
 ### 参考
 1. MicroPython On ESP8266基于[NON-OS SDK](http://espressif.com/sites/default/files/documentation/5a-esp8266_sdk_ssl_user_manual_cn_v1.4.zip)开发，与ESP8266平台相关的代码要参考官方SDK文档。
