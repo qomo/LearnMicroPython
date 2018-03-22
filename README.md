@@ -92,11 +92,11 @@ For further help on a specific object, type help(obj)
 >>> 
 </code></pre>  
 
-## MicroPython On Esp8266 编译环境  
+## MicroPython On Esp8266 编译环境  
 1. [安装esp-open-sdk](https://github.com/pfalcon/esp-open-sdk)
 2. [参考micropython/ports/esp8266的指导下载编译源码](https://github.com/micropython/micropython/tree/master/ports/esp8266)
 
-## 自动化测试  
+## 自动化测试  
 ### 测试的执行方法  
 ### 测试的原理
 
@@ -111,7 +111,7 @@ For further help on a specific object, type help(obj)
 ⽤户任务⼀般⽤于函数不能直接被调⽤的情况下。要创建⽤户任务，请参阅本⽂档中的 <code>system_os_task()</code> 的 API 描述。
 ### 目录结构
 
-### 入口函数解析(main.c)
+### 入口函数解析(main.c)
 <pre><code>
 ...
 void init_done(void) {
@@ -148,7 +148,7 @@ void user_init(void) {  // 程序入口
 ...
 </code></pre>
 
-## 参考
+## 参考  
 1. [Micropython on ESP8266官方文档](http://docs.micropython.org/en/latest/esp8266/esp8266/tutorial/index.html)
 2. [MicroPython实现分析与移植](http://m.blog.chinaunix.net/uid-30044407-id-5766697.html)
 3. [MicroPython Github站点](https://github.com/micropython/micropython)
