@@ -98,6 +98,11 @@ For further help on a specific object, type help(obj)
 
 ## 自动化测试  
 ### 测试的执行方法  
+![WebRepl](./imgs/img_test_help.png)
+对于ESP8266，按如下指令执行测试：  
+<pre><code>
+./run-tests --target esp8266 --device /dev/tty.wchusbserial1420
+</code></pre>
 ### 测试的原理
 
 ## 源码详解  
