@@ -11,7 +11,7 @@
 > 这是用来flash firmware到esp8266的工具  
 
 ### 刷镜像  
-1. 将nodemcu的节点权限设为777  
+1. 将nodemcu的节点权限设为777(检查是否有可写权限，若无，添加之)  
 <pre><code>
 LearnMicroPython$ ls -l /dev/ttyUSB0  
 crw-rw---- 1 root dialout 188, 0 10月 22 11:54 /dev/ttyUSB0
@@ -19,6 +19,7 @@ LearnMicroPython$ sudo chmod 777 /dev/ttyUSB0
 LearnMicroPython$ ls -l /dev/ttyUSB0 
 crwxrwxrwx 1 root dialout 188, 0 10月 22 11:54 /dev/ttyUSB0
 </code></pre>
+> 如果找不到串口，请先安装CH340串口芯片的驱动
 
 2. 按住FLASH按钮，用以下指令擦除flash里的数据  
 <pre><code>
@@ -91,5 +92,61 @@ For further help on a specific object, type help(obj)
 >>> 
 </code></pre>  
 
+## MicroPython On Esp8266 编译环境  
+1. [安装esp-open-sdk](https://github.com/pfalcon/esp-open-sdk)
+2. [参考micropython/ports/esp8266的指导下载编译源码](https://github.com/micropython/micropython/tree/master/ports/esp8266)
 
+## 源码详解  
+### 参考
+1. MicroPython On ESP8266基于[NON-OS SDK](http://espressif.com/sites/default/files/documentation/5a-esp8266_sdk_ssl_user_manual_cn_v1.4.zip)开发，与ESP8266平台相关的代码要参考官方SDK文档。
+
+### ESP8266 NON-OS SDK笔记
+1. <code>void user_init(void)</code> 是程序的入口。
+2. <code>system_init_done_cb(init_done);</code> 注册系统初始化完成之后的回调函数 <code>init_done</code>
+3. ⽤户任务可以分为三个优先级：0、1、2。任务优先级为 2 > 1 > 0。即 Non-OS SDK 最多只⽀持 3 个⽤户任务，优先级分别为 0、1、2。  
+⽤户任务⼀般⽤于函数不能直接被调⽤的情况下。要创建⽤户任务，请参阅本⽂档中的 <code>system_os_task()</code> 的 API 描述。
+### 目录结构
+
+### 入口函数解析(main.c)
+<pre><code>
+...
+void init_done(void) {
+    #if MICROPY_REPL_EVENT_DRIVEN
+    uart_task_init();
+    #endif
+    mp_reset();
+    mp_hal_stdout_tx_str("\r\n");
+    #if MICROPY_REPL_EVENT_DRIVEN
+    pyexec_event_repl_init();
+    #endif
+
+    #if !MICROPY_REPL_EVENT_DRIVEN
+soft_reset:
+    for (;;) {
+        if (pyexec_mode_kind == PYEXEC_MODE_RAW_REPL) {
+            if (pyexec_raw_repl() != 0) {
+                break;
+            }
+        } else {
+            if (pyexec_friendly_repl() != 0) {
+                break;
+            }
+        }
+    }
+    soft_reset();
+    goto soft_reset;
+    #endif
+}
+
+void user_init(void) {  // 程序入口
+    system_init_done_cb(init_done);   // 初始化完成后调用回调函数init_done
+}
+...
+</code></pre>
+
+## 参考
 1. [Micropython on ESP8266官方文档](http://docs.micropython.org/en/latest/esp8266/esp8266/tutorial/index.html)
+2. [MicroPython实现分析与移植](http://m.blog.chinaunix.net/uid-30044407-id-5766697.html)
+3. [MicroPython Github站点](https://github.com/micropython/micropython)
+4. [ESP8266 官方文档](http://espressif.com/zh-hans/support/download/documents)
+5. [Python源码剖析](https://read.douban.com/reader/ebook/1499455/)
